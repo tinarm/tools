@@ -1,0 +1,57 @@
+graph dmx_arch {
+
+    fontname="Verdana";
+    fontsize=8;
+    rankdir=LR;
+
+    node [shape="record"
+          fontname="Verdana"
+          fontsize=8];
+    
+    edge [fontname="Verdana"
+          fontsize=8];
+
+    subgraph cluster_me {
+        label="ME";
+        me_dmx [label="dmx"];
+
+        subgraph cluster_dp {
+            label="Data providers";
+            style=dotted;
+
+            me_any [label="..."];
+            me_idbg [label="IDBG"];
+            me_tvp [label="TVP"];
+            me_printserv [label="Print Server"];
+        }
+    }
+
+    subgraph cluster_host {
+        label="Host";
+        host_dmxd [label="dmxd"];
+
+        subgraph cluster_any {
+            label="...";
+            libdmxclient_any [label="libdmxclient"];
+        }
+        subgraph cluster_tscom {
+            label="TSCom";
+            libdmxclient_tscom [label="libdmxclient"];
+        }
+        subgraph cluster_dmxjava {
+            label="DebugMux Java API";
+            libdmxclient_dmxjava [label="libdmxclient"];
+        }
+    }
+
+    me_idbg -- me_dmx;
+    me_tvp -- me_dmx;
+    me_printserv -- me_dmx;
+    me_any -- me_dmx;
+    
+    me_dmx -- host_dmxd [label="TCP socket/serial"];
+    
+    host_dmxd -- libdmxclient_tscom;
+    host_dmxd -- libdmxclient_dmxjava;
+    host_dmxd -- libdmxclient_any;
+}

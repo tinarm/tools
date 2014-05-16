@@ -1,0 +1,26 @@
+digraph lins_dmx {
+    node [shape="record"
+          fontname="Verdana"
+          fontsize=8];
+
+dmxd [label="PC DebugMux Server (dmxd)"]
+libdmxclient [label="DebugMuxClientAPI.dll", shape="oval"]
+libdmxclient -> dmxd
+
+dmx_java_api [label="DebugMux Java API"]
+dmx_java_api -> libdmxclient
+
+dmx_java_config [label="DebugMux Java Configuration GUI"]
+dmx_java_config -> dmx_java_api
+
+loco [label="LoCo"]
+loco -> dmx_java_api
+
+lins_2 [label="LiNS 2"]
+lins_2 -> loco
+lins_2 -> dmx_java_config
+
+tscom [label="TSCom.dll"]
+tscom -> libdmxclient
+loco -> tscom
+}
