@@ -1,0 +1,52 @@
+[user]
+	name = Martin Ohlsson
+	email = martin.ohlsson@telavox.se
+
+[core]
+	editor = vim
+	
+	# Global excludes-fil. Användbar för vanliga tempfiländelser
+	excludesfile = ~/.gitignore
+
+	# Assert git do not touch line endings
+	whitespace = cr-at-eol
+	autocrlf = false
+	pager = less -x1,5
+
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+
+[alias]
+	st = status
+	co = checkout
+	br = branch
+
+[branch]
+	# Pulling a branch should execute a _rebase_, not merge.
+	autosetuprebase = always
+
+[merge]
+	# Ask for a merge commit message when merging
+	log = true
+	tool = bc4
+
+[rebase]
+	# ...om man inte alltid vill specificera `--autosquash` till
+	# `git rebase`.
+	autosquash = true
+[rerere]
+	# Enable remembering conflict resolution. See http://goo.gl/hdAsi3
+	enabled = true
+[push]
+	default = simple
+[diff]
+	tool = bc4
+[difftool]
+	bc4 = trustExitCode
+[mergetool]
+	bc4 = trustExitCode
+[init]
+	templatedir = ~/.git_template
