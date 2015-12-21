@@ -5,8 +5,13 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 # Aliases
 # ---------------------------------------------------------------------
-alias ll='ls -l'
+alias l='ls -lh'
+alias ll='ls -lah'
 alias sublime='open -a Sublime\ Text\ 2'
+alias bc4='open -a Beyond\ Compare'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 
 # Java
 # ---------------------------------------------------------------------
@@ -27,19 +32,28 @@ function setjdk() {
         export PATH=$JAVA_HOME/bin:$PATH
     fi
 }
-setjdk 1.7
+setjdk 1.8
 #setjdk 1.7.0_45
 
 # Maven
 # ---------------------------------------------------------------------
-export M2_HOME=/Users/moh/bin/apache-maven/apache-maven-2.0.11
+export M2_HOME=/Users/moh/bin/apache-maven/apache-maven-2.2.1
 export M2=$M2_HOME/bin
 
 # PATH
 # ---------------------------------------------------------------------
-export PATH=$PATH:~/bin:$JAVA_HOME/bin:$M2
+export PATH=$JAVA_HOME/bin:$M2:~/bin/gradle-2.2.1/bin:~/perl5/bin:~/bin:/usr/local/bin:$PATH
 
 # Git
 # ---------------------------------------------------------------------
 source ~/git-completion.bash
+source ~/bin/git-prompt.sh
+PS1="\h:\W \u\$(__git_ps1 \" (\e[94m%s\e[0m) \")\$ "
 
+# Perl path
+# ---------------------------------------------------------------------
+export PERL5LIB=$HOME/perl5/lib:$HOME/perl5/lib/perl5/darwin-thread-multi-2level:/Users/moh/devel/p/agi-scripts
+
+# FindBugs
+# ---------------------------------------------------------------------
+export FINDBUGS_HOME=/Users/moh/bin/findbugs-3.0.1-rc2

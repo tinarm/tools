@@ -2,6 +2,7 @@
     set nocompatible
     set background=dark
     set title
+    set hlsearch
 " }
 
 " Coding {
@@ -17,5 +18,10 @@
     set showmatch
     set number
     set numberwidth=5
-" }
 
+    " Makefiles
+    autocmd FileType make,automake set noexpandtab
+
+    " Associate .gradle with groovy syntax
+    au BufRead,BufNewFile *.gradle setfiletype groovy
+" }
