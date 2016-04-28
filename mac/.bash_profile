@@ -1,3 +1,8 @@
+# Editing mode
+# ---------------------------------------------------------------------
+set -o vi
+# set -o emacs (bash default mode)
+
 # Term colors
 # ---------------------------------------------------------------------
 export CLICOLOR=1
@@ -42,7 +47,7 @@ export M2=$M2_HOME/bin
 
 # PATH
 # ---------------------------------------------------------------------
-export PATH=$JAVA_HOME/bin:$M2:~/bin/gradle-2.2.1/bin:~/perl5/bin:~/bin:/usr/local/bin:$PATH
+export PATH=~/bin:$JAVA_HOME/bin:$M2:~/bin/gradle-2.2.1/bin:~/perl5/bin:/usr/local/bin:$PATH
 
 # Git
 # ---------------------------------------------------------------------
