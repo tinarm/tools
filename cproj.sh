@@ -1,13 +1,23 @@
 #!/usr/bin/env bash
 
-cfile=main.c
-hfile=main.h
-mfile=Makefile
+if [ "$#" -ne 1 ]; then
+    echo "Wrong number of args. Should be one (1)."
+    echo
+    echo "Usage: $0 <project name>"
+    exit 1
+fi
 
-if [ -e "$cfile" ] || [ -e "$hfile" ] || [ -e "$mfile" ]; then
+project="$1"
+cfile="$project"/main.c
+hfile="$project"/main.h
+mfile="$project"/Makefile
+
+if [ -e "$project" ]; then
     echo Will not overwrite existing files!
     exit 1
 fi
+
+mkdir "$project"
 
 # Creating main source file.
 echo '#include <stdio.h>' >> "$cfile"
@@ -34,7 +44,7 @@ echo 'obj = $(src:.c=.o)' >> "$mfile"
 echo >> "$mfile"
 echo 'LDFLAGS = #-lz -lm' >> "$mfile"
 echo >> "$mfile"
-echo 'myprog: $(obj)' >> "$mfile"
+echo "${project}: \$(obj)" >> "$mfile"
 echo -n -e '\t' >> "$mfile"
 echo '$(CC) -Wall -o $@ $^ $(LDFLAGS)' >> "$mfile"
 echo >> "$mfile"
