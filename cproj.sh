@@ -51,6 +51,6 @@ echo >> "$mfile"
 echo '.PHONY: clean' >> "$mfile"
 echo 'clean:' >> "$mfile"
 echo -n -e '\t' >> "$mfile"
-echo 'rm -f $(obj) myprog' >> "$mfile"
+echo "rm -f $(obj) ${project}" >> "$mfile"
 echo >> "$mfile"
 
