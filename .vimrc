@@ -4,7 +4,10 @@ execute pathogen#infect()
     set nocompatible
     set background=dark
     set title
-    set hlsearch
+    set nohlsearch
+    set cursorline
+    "hi CursorLine cterm=bold ctermbg=235
+    hi CursorLine cterm=bold ctermbg=DarkGrey
 " }
 
 " Coding {
