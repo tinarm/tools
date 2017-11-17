@@ -1,0 +1,86 @@
+* tabview <delimited_file>
+    - display a delimited file in columnar format
+
+* ssh {username}@{hostname}
+    - connect to a remote machine
+
+* tree -LhaC 3
+    - show directory structure 3 levels down (with file sizes and including hidden directories)
+
+*htop
+    - task manager
+
+* pip install --user {pip_package}
+    - Python package manager to install  packages to ~/.local/bin
+
+* pushd . ; popd ; dirs; cd -
+    - push/pop/view directories onto the stack + change back to last directory
+
+* sed -i "s/{find}/{replace}/g" {file}
+    - replace a string in a file
+
+* find . -type f -name '*.txt' -exec sed -i "s/{find}/{replace}/g" {} \;
+    - replace a string for each file in this and child folders with a name like *.txt
+
+* tmux new -s session, tmux attach -t session
+    - create another terminal session without creating a new window [advanced]
+
+* wget {link}
+    - download a webpage or web resource
+
+* curl -X POST -d "{key: value}" http://www.google.com
+    - send an HTTP request to a web server
+
+* lsof -i :8080
+    - list open file descriptors (-i flag for network interfaces)
+
+* netstat | head -n20
+    - list currently open Internet/UNIX sockets and related information
+
+* dstat -a
+    - stream current disk, network, CPU activity & more
+
+* nslookup <IP address>
+    - find hostname for a remote IP address
+
+* strace -f -e <syscall> <cmd>
+    - trace system calls of a program (-e flag to filter for certain system calls)
+
+* ps aux | head -n20
+    - print currently active processes
+
+* file <file>
+    - check what a file type is (eg. executable, binary, ASCII-text file)
+
+* uname -a
+    - kernel information
+
+* lsb_release -a
+    - OS information
+
+* hostname
+    - check the hostname of your machine (ie. the name so other computers can reach you)
+
+* pstree
+    - visualize process forks
+
+* time <cmd>
+    - execute a command and report statistics about how long it took
+
+* CTRL + z ; bg; jobs; fg
+    - send a process in current tty into background and back to foreground
+
+* cat file.txt | xargs -n1 | sort | uniq -c
+    - count unique words in a file
+
+* wc -l <file>
+    - line count in a file
+
+* du -ha
+    - show size on disk for directories and their contents
+
+* zcat <file.gz>
+    - display contents of a zipped text file
+
+* scp <user@remote_host> <local_path>
+    - copy a file from remote to local server, or vice versa
