@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+mkdir -p ~/logbook
+vim ~/logbook/$(date '+%Y-%m-%d').md
+
