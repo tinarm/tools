@@ -1,0 +1,14 @@
+Start program (program will break in entry point / main function)
+(gdb) start
+
+useful commands
+  enable source code view
+    (gdb) tui enable
+  step into program execution
+    (gdb) s
+  step over program execution
+    (gdb) n
+  continue program execution
+    (gdb) c
+  break on line
+    (gdb) break file.c:150
