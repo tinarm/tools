@@ -1,0 +1,25 @@
+{
+    "[cpp]": {
+        "editor.quickSuggestions": false
+    },
+    "[c]": {
+        "editor.quickSuggestions": false
+    },
+
+    "editor.fontSize": 12,
+    "editor.minimap.enabled": false,
+    "editor.rulers": [
+        80
+    ],
+    "files.autoSave": "off",
+    "files.trimTrailingWhitespace": true,
+
+    "window.zoomLevel": 0,
+    "window.title": "${activeEditorLong}",
+
+    "vim.easymotion": true,
+    "vim.sneak": true,
+    "vim.incsearch": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+}
