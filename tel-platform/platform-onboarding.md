@@ -11,7 +11,7 @@
 | gateway          | Joins two different networks                                                                     |
 | SIP proxy        | Intermediate entity acting both server and client.<br>Plays a role in routing and load balancing |
 | SIP server       | Manages call sessions between multiple endpoints                                                 |
-| tlb              | Load balancer for SIP calls.<b>Determines how calls are routed through the telephony platform    |
+| tlb              | Load balancer for SIP calls.<br>Determines how calls are routed through the telephony platform   |
 | top              | Tracks the real-time state of different SIP calls                                                |
 | ttps             | Provisioning server used to configure SIP phones                                                 |
 
