@@ -46,7 +46,7 @@ The figure below visualizes the main components involved routing calls.
 Due to some legacy naming convention the name `proxy` turns up in multiple areas.
 
 E.g. the `sipproxy1` sends traffic to the SIP server `sip42` (composed of
-`tproxy`) which in turn might relay the traffic to a gateway like `tdcproxy1`:
+`proxy`) which in turn might relay the traffic to a gateway like `tdcproxy1`:
 
 ```
                          <<SIP server>>
@@ -63,7 +63,7 @@ E.g. the `sipproxy1` sends traffic to the SIP server `sip42` (composed of
 used during call setup
 * The `proxy`, which is a component of the SIP server (`sip42` in the figure
 above), was initially created for the gateway. This mean that the `proxy` and
-the gateway  are built form the same project, i.e.
+the gateway are built from the same project, i.e.
 [Telavox/proxy](https://github.com/Telavox/proxy)
 * The `tdcproxy1` is in this case the gateway to the TDC network.
 
