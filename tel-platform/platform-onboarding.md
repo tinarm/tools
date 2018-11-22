@@ -2,18 +2,20 @@
 
 ## Terminology
 
-| Term             | Description                                                                                      |
-|------------------|--------------------------------------------------------------------------------------------------|
-| base application |                                                                                                  |
-| baseman          |                                                                                                  |
-| configurator     |                                                                                                  |
-| desktop app      | Desktop softphone application                                                                    |
-| gateway          | Joins two different networks                                                                     |
-| SIP proxy        | Intermediate entity acting both server and client.<br>Plays a role in routing and load balancing |
-| SIP server       | Manages call sessions between multiple endpoints                                                 |
-| tlb              | Load balancer for SIP calls.<br>Determines how calls are routed through the telephony platform   |
-| top              | Tracks the real-time state of different SIP calls                                                |
-| ttps             | Provisioning server used to configure SIP phones                                                 |
+| Term                | Description                                                                                      |
+|---------------------|--------------------------------------------------------------------------------------------------|
+| baseman             | Central server for managing base applications                                                    |
+| base application    | Application managed by baseman                                                                   |
+| configurator        | Distributes configuration to base applications                                                   |
+| desktop app         | Desktop softphone application                                                                    |
+| gateway             | Joins two different networks                                                                     |
+| provisioning server | Configures a SIP client with e.g. IP address and a DNS server for looking up domain names        |
+| registrar           | Location service managing SIP REGISTER information                                               |
+| SIP proxy           | Intermediate entity acting both server and client.<br>Plays a role in routing and load balancing |
+| SIP server          | Manages call sessions between multiple endpoints                                                 |
+| tlb                 | Load balancer for SIP calls.<br>Determines how calls are routed through the telephony platform   |
+| top                 | Tracks the real-time state of SIP calls                                                          |
+| ttps                | Telavox provisioning server                                                                      |
 
 
 ## A bird's-eye view
@@ -21,22 +23,22 @@
 The figure below visualizes the main components involved routing calls.
 
 ```
-<<provisioner>>        <<load balancer>>
-   +------+                +-----+
-   | ttps |          ------| tlb |
-   +------+          |     +-----+
-       |             |
-       |             |
-   ____|___          |          <<SIP server>>   <<edge gateway>>      __   _
-  (_]----[_)    +----------+       +-----+         +---------+       _(  )_( )_
-    |.''.|------| sipproxy |-------| sip |---------| gateway |------(_ cloud  _)
-    |'..'|      +----------+       +-----+         +---------+        (_) (__)
-    '----'                           | |
-                              -------- ----------
-                              |                 |
-   +-------------+         +-----+         +----------+
-   | desktop app |---------| top |         | userdata | <<registrar>>
-   +-------------+         +-----+         +----------+
+<<provisioning server>>   <<load balancer>>
+      +------+                +-----+
+      | ttps |          ------| tlb |-----
+      +------+          |     +-----+    |
+          |             |                |
+          |             |                |
+      ____|___          |          <<SIP server>>   <<edge gateway>>      __   _
+     (_]----[_)    +----------+       +-----+         +---------+       _(  )_( )_
+       |.''.|------| sipproxy |-------| sip |---------| gateway |------(_ cloud  _)
+       |'..'|      +----------+       +-----+         +---------+        (_) (__)
+       '----'                           | |
+                                 -------- ----------
+                                 |                 |
+      +-------------+         +-----+         +----------+
+      | desktop app |---------| top |         | userdata | <<registrar>>
+      +-------------+         +-----+         +----------+
 
 ```
 *Figure 1. Main call routing components*
@@ -100,5 +102,6 @@ The `tproxy` is a PBX implementation which has replaced Asterisk. The
 ## Call routing - the details
 
 <img src="images/tvx-calling-ext.png" style="left;" />
+*Figure 3. Call routing*
 
 
