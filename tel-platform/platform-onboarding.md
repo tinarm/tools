@@ -5,15 +5,15 @@
 | Term                | Description                                                                                          |
 |---------------------|------------------------------------------------------------------------------------------------------|
 | baseman             | Central server for managing base applications                                                        |
-| base application    | Application managed by baseman                                                                       |
+| base application    | Application managed by baseman, e.g. ttps, tlb, top, proxy                                           |
 | configurator        | Distributes configuration to base applications                                                       |
 | desktop app         | Desktop softphone application                                                                        |
 | gateway             | Joins two different networks                                                                         |
 | provisioning server | Configures a SIP client with e.g. IP address and a DNS server for looking up domain names            |
-| registrar           | Location service managing SIP REGISTER information                                                   |
 | SIP cluster         | Cluster of SIP proxies (resolved by clients via DNS SRV records)                                     |
 | SIP pool            | Pool of SIP servers (to simplify load balancing)                                                     |
 | SIP proxy           | Intermediate entity acting both server and client.<br>Plays a role in routing requests and responses |
+| SIP registrar       | Location service managing SIP REGISTER information                                                   |
 | SIP server          | Manages call sessions between multiple endpoints                                                     |
 | tlb                 | Load balancer for SIP calls.<br>Determines how calls are routed through the telephony platform       |
 | top                 | Tracks the real-time state of SIP calls                                                              |
@@ -46,7 +46,7 @@ The figure below visualizes the main components involved routing calls.
                                    -------- ----------
                                    |                 |
       +-------------+           +-----+         +----------+
-      | desktop app |-----------| top |         | userdata | <registrar>
+      | desktop app |-----------| top |         | userdata | <SIP registrar>
       +-------------+           +-----+         +----------+
 
 ```
@@ -54,7 +54,7 @@ The figure below visualizes the main components involved routing calls.
 
 ## Proxies everywhere
 
-Due to some legacy naming convention the name `proxy` turns up in multiple areas.
+Maybe you have heard the name "proxy" turn up here and there.
 
 E.g. the `sipproxy1` sends traffic to the SIP server `sip42` (composed of
 `proxy`) which in turn might relay the traffic to a gateway like `tdcproxy1`:
@@ -71,7 +71,7 @@ E.g. the `sipproxy1` sends traffic to the SIP server `sip42` (composed of
 
 
 * The `sipproxy1` is a third-party component ([Kamailio](https://www.kamailio.org))
-used during call setup
+used mainly for routing calls
 * The `proxy`, which is a component of the SIP server (`sip42` in the figure
 above), was initially created for the gateway. This mean that the `proxy` and
 the gateway are built from the same project, i.e.
