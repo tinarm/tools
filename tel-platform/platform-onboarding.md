@@ -4,12 +4,15 @@
 
 | Term                | Description                                                                                          |
 |---------------------|------------------------------------------------------------------------------------------------------|
+| AGI                 | Asterisk Gateway Interface - used within the SIP server to execute scripts                           |
 | baseman             | Central server for managing base applications                                                        |
 | base application    | Application managed by baseman, e.g. ttps, tlb, top, proxy                                           |
 | configurator        | Distributes configuration to base applications                                                       |
 | desktop app         | Desktop softphone application                                                                        |
 | gateway             | Joins two different networks                                                                         |
 | provisioning server | Configures a SIP client with e.g. IP address and a DNS server for looking up domain names            |
+| RTP                 | Real-time Transport Protocol - for delivering media over IP networks                                 |
+| SIP                 | Session Initiation Protocol - signaling protocol for maintaining media sessions                      |
 | SIP cluster         | Cluster of SIP proxies (resolved by clients via DNS SRV records)                                     |
 | SIP pool            | Pool of SIP servers (to simplify load balancing)                                                     |
 | SIP proxy           | Intermediate entity acting both server and client.<br>Plays a role in routing requests and responses |
@@ -90,6 +93,11 @@ The SIP server is made up of the following three main components/projects:
 * `mediaserver`
 * `scriptserver`
 
+The `tproxy` and the `mediaserver` executes in the same JVM but communicates
+through a JSON-RPC protocol. The reason for using RPC is to make it possible to
+break out the `mediaserver` in the future if call endpoints are very far away from
+each other.
+
 ```
         +----------------------------------------+
    SIP  |    +--------+   AGI   +--------------+ |
@@ -105,8 +113,8 @@ The SIP server is made up of the following three main components/projects:
 *Figure 2. SIP server*
 
 
-The `tproxy` is a PBX implementation which has replaced Asterisk. The
-`mediaserver` manages the media streams used for audio and video.
+The `tproxy` is a PBX implementation which has replaced Asterisk. The `mediaserver`
+manages the media streams used for audio and video.
 
 ## Call routing - the details
 
