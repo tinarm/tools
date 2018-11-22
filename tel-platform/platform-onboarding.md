@@ -23,22 +23,29 @@
 The figure below visualizes the main components involved routing calls.
 
 ```
-<<provisioning server>>   <<load balancer>>
-      +------+                +-----+
-      | ttps |          ------| tlb |-----
-      +------+          |     +-----+    |
-          |             |                |
-          |             |                |
-      ____|___          |          <<SIP server>>   <<edge gateway>>      __   _
-     (_]----[_)    +----------+       +-----+         +---------+       _(  )_( )_
-       |.''.|------| sipproxy |-------| sip |---------| gateway |------(_ cloud  _)
-       |'..'|      +----------+       +-----+         +---------+        (_) (__)
-       '----'                           | |
-                                 -------- ----------
-                                 |                 |
-      +-------------+         +-----+         +----------+
-      | desktop app |---------| top |         | userdata | <<registrar>>
-      +-------------+         +-----+         +----------+
+  <provisioning server>    <load balancer>
+      +------+                 +-----+
+      | ttps |           ------| tlb |-----
+      +------+           |     +-----+    |
+          |              |                |
+          |              |                |
+      ____|___           |           <SIP server>     <edge gateway>        __   _
+     (_]----[_)    +-----------+        +-----+         +---------+       _(  )_( )_
+       |.''.|------| sipproxy1 |--------| sip |---------| gateway |------(_ cloud  _)
+       |'..'|      +-----------+        +-----+         +---------+        (_) (__)
+       '----'                             | |
+          |                               | |
+          |     <sip.telavox.se>          | |
+          |         +-----+               | |
+          ----------| DNS |               | |
+                    +-----+               | |
+          SRV -> sipproxy1.telavox.se     | |
+                                          | |
+                                   -------- ----------
+                                   |                 |
+      +-------------+           +-----+         +----------+
+      | desktop app |-----------| top |         | userdata | <registrar>
+      +-------------+           +-----+         +----------+
 
 ```
 *Figure 1. Main call routing components*
