@@ -109,6 +109,7 @@ The `tproxy` is a PBX implementation which has replaced Asterisk. The
 ## Call routing - the details
 
 <img src="images/tvx-calling-ext.png" style="left;" />
+
 *Figure 3. Call routing*
 
 
