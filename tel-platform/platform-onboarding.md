@@ -11,6 +11,8 @@
 | gateway             | Joins two different networks                                                                         |
 | provisioning server | Configures a SIP client with e.g. IP address and a DNS server for looking up domain names            |
 | registrar           | Location service managing SIP REGISTER information                                                   |
+| SIP cluster         | Cluster of SIP proxies (resolved by clients via DNS SRV records)                                     |
+| SIP pool            | Pool of SIP servers (to simplify load balancing)                                                     |
 | SIP proxy           | Intermediate entity acting both server and client.<br>Plays a role in routing requests and responses |
 | SIP server          | Manages call sessions between multiple endpoints                                                     |
 | tlb                 | Load balancer for SIP calls.<br>Determines how calls are routed through the telephony platform       |
@@ -23,7 +25,7 @@
 The figure below visualizes the main components involved routing calls.
 
 ```
-  <provisioning server>    <load balancer>
+ <provisioning server>     <load balancer>
       +------+                 +-----+
       | ttps |           ------| tlb |-----
       +------+           |     +-----+    |
@@ -58,8 +60,8 @@ E.g. the `sipproxy1` sends traffic to the SIP server `sip42` (composed of
 `proxy`) which in turn might relay the traffic to a gateway like `tdcproxy1`:
 
 ```
-                         <<SIP server>>
-        <<proxy>>         +---------+        <<gateway>>
+                          <SIP server>
+         <proxy>          +---------+         <gateway>
       +-----------+       | [proxy] |       +-----------+
       | sipproxy1 |       |         |       | tdcproxy1 |
       +-----------+       |  sip42  |       +-----------+
