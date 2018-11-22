@@ -2,20 +2,20 @@
 
 ## Terminology
 
-| Term                | Description                                                                                      |
-|---------------------|--------------------------------------------------------------------------------------------------|
-| baseman             | Central server for managing base applications                                                    |
-| base application    | Application managed by baseman                                                                   |
-| configurator        | Distributes configuration to base applications                                                   |
-| desktop app         | Desktop softphone application                                                                    |
-| gateway             | Joins two different networks                                                                     |
-| provisioning server | Configures a SIP client with e.g. IP address and a DNS server for looking up domain names        |
-| registrar           | Location service managing SIP REGISTER information                                               |
-| SIP proxy           | Intermediate entity acting both server and client.<br>Plays a role in routing and load balancing |
-| SIP server          | Manages call sessions between multiple endpoints                                                 |
-| tlb                 | Load balancer for SIP calls.<br>Determines how calls are routed through the telephony platform   |
-| top                 | Tracks the real-time state of SIP calls                                                          |
-| ttps                | Telavox provisioning server                                                                      |
+| Term                | Description                                                                                          |
+|---------------------|------------------------------------------------------------------------------------------------------|
+| baseman             | Central server for managing base applications                                                        |
+| base application    | Application managed by baseman                                                                       |
+| configurator        | Distributes configuration to base applications                                                       |
+| desktop app         | Desktop softphone application                                                                        |
+| gateway             | Joins two different networks                                                                         |
+| provisioning server | Configures a SIP client with e.g. IP address and a DNS server for looking up domain names            |
+| registrar           | Location service managing SIP REGISTER information                                                   |
+| SIP proxy           | Intermediate entity acting both server and client.<br>Plays a role in routing requests and responses |
+| SIP server          | Manages call sessions between multiple endpoints                                                     |
+| tlb                 | Load balancer for SIP calls.<br>Determines how calls are routed through the telephony platform       |
+| top                 | Tracks the real-time state of SIP calls                                                              |
+| ttps                | Telavox provisioning server                                                                          |
 
 
 ## A bird's-eye view
