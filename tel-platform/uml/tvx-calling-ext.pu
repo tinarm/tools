@@ -8,7 +8,7 @@ participant "sip proxy"    as sipproxy                order 2
 participant "sip server 1" as sip1                    order 3
 participant "tlb"                                     order 4
 participant "tdc proxy 1"  as tdcproxy1 << gateway >> order 6
-participant "bob@tdc"      as tdcnet                  order 7
+actor       "bob@tdc"      as tdcnet                  order 7
 
 alice -> sipproxy : INVITE sip:bob@tdc, From: alice
 sipproxy -> alice : 100 Trying
