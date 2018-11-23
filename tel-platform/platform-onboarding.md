@@ -40,26 +40,25 @@ The figure below visualizes the main components involved routing calls.
        |'..'|      +-----------+        +-----+         +---------+        (_) (__)
        '----'                             | |
           |                               | |
-          |     <sip.telavox.se>          | |
-          |         +-----+               | |
-          ----------| DNS |               | |
-                    +-----+               | |
-          SRV -> sipproxy1.telavox.se     | |
-                                          | |
-                                   -------- ----------
-                                   |                 |
-      +-------------+           +-----+         +----------+
-      | desktop app |-----------| top |         | userdata | <SIP registrar>
-      +-------------+           +-----+         +----------+
+          |     <sip.telavox.se>          | |           +----------+
+          |         +-----+               | ------------| userdata | <SIP registrar>
+          ----------| DNS |               |             +----------+
+                    +-----+               |
+          SRV -> sipproxy1.telavox.se     |
+                                          |
+                                          |
+      +-------------+                  +-----+
+      | desktop app |------------------| top |
+      +-------------+                  +-----+
 
 ```
 *Figure 1. Main call routing components*
 
 ## Proxies everywhere
 
-Maybe you have heard the name "proxy" turn up here and there.
+Confused about the name "proxy" turning up here and there?
 
-E.g. the `sipproxy1` sends traffic to the SIP server `sip42` (composed of
+E.g. a `sipproxy` sends traffic to the SIP server `sip42` (composed of
 `proxy`) which in turn might relay the traffic to a gateway like `tdcproxy1`:
 
 ```
@@ -73,7 +72,7 @@ E.g. the `sipproxy1` sends traffic to the SIP server `sip42` (composed of
 *Figure 2. Proxies everywhere*
 
 
-* The `sipproxy1` is a third-party component ([Kamailio](https://www.kamailio.org))
+* The `sipproxy` is a third-party component ([Kamailio](https://www.kamailio.org))
 used mainly for routing calls
 * The `proxy`, which is a component of the SIP server (`sip42` in the figure
 above), was initially created for the gateway. This mean that the `proxy` and
@@ -89,20 +88,20 @@ sessions between endpoints, the RTP media routing and the SIP registrar (the
 registrar itself is located outside the SIP server).
 
 The SIP server is made up of the following three main components/projects:
-* `tproxy` (proxy project)
+* `proxy`
 * `mediaserver`
 * `scriptserver`
 
-The `tproxy` and the `mediaserver` executes in the same JVM but communicates
+The `proxy` and the `mediaserver` executes in the same JVM but communicates
 through a JSON-RPC protocol. The reason for using RPC is to make it possible to
 break out the `mediaserver` in the future if call endpoints are very far away from
 each other.
 
 ```
         +----------------------------------------+
-   SIP  |    +--------+   AGI   +--------------+ |
- ------------| tproxy |---------| scriptserver | |
-        |    +--------+         +--------------+ |
+   SIP  |    +-------+   AGI   +--------------+  |
+ ------------| proxy |---------| scriptserver |  |
+        |    +-------+         +--------------+  |
         |        | RPC                           |
    RTP  |  +-------------+                       |
  ----------| mediaserver |                       |
@@ -112,9 +111,6 @@ each other.
 ```
 *Figure 2. SIP server*
 
-
-The `tproxy` is a PBX implementation which has replaced Asterisk. The `mediaserver`
-manages the media streams used for audio and video.
 
 ## Call routing - the details
 
