@@ -1,0 +1,11 @@
+<manifest>
+    <remote name="tvxgit" fetch="https://github.com/Telavox"/>
+    <default remote="origin" revision="master" sync-j="4"/>
+
+    <project name="agi-scripts" path="agi-scripts"/>
+    <project name="mediaserver" path="mediaserver"/>
+    <project name="pjproject" path="pjproject" revision="mediaserver"/>
+    <project name="proxy" path="proxy"/>
+    <project name="scriptserver" path="scriptserver"/>
+    <project name="top" path="top"/>
+</manifest>
