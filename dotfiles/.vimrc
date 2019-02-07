@@ -1,6 +1,9 @@
 execute pathogen#infect()
 
+filetype plugin indent on
+
 " Basic {
+    set mouse=a
     set nocompatible
     set background=dark
     set title
