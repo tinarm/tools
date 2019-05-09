@@ -1,0 +1,15 @@
+# To generate a 1000 Hz signal for 5 seconds duration use this
+
+$ ffmpeg -f lavfi -i "sine=frequency=1000:duration=5" test.wav
+
+# You can add -c:a pcm_s16le
+
+$ ffmpeg -f lavfi -i "sine=frequency=1000:duration=5" -c:a pcm_s16le test.wav
+
+# To also set the sampling rate to 48 KHz
+
+$ ffmpeg -f lavfi -i "sine=frequency=1000:sample_rate=48000:duration=5" -c:a pcm_s16le test.wav
+
+# To also set the amplitude by adding for example
+
+$ <ffmpeg cmd> -af "volume=-18dB"
