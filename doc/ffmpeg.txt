@@ -2,14 +2,27 @@
 
 $ ffmpeg -f lavfi -i "sine=frequency=1000:duration=5" test.wav
 
+
 # You can add -c:a pcm_s16le
 
 $ ffmpeg -f lavfi -i "sine=frequency=1000:duration=5" -c:a pcm_s16le test.wav
+
 
 # To also set the sampling rate to 48 KHz
 
 $ ffmpeg -f lavfi -i "sine=frequency=1000:sample_rate=48000:duration=5" -c:a pcm_s16le test.wav
 
+
 # To also set the amplitude by adding for example
 
 $ <ffmpeg cmd> -af "volume=-18dB"
+
+
+# Convert WAV to G722
+
+$ ffmpeg -i sample.wav -ar 16000 -acodec g722 sample.g722
+
+
+# Convert WAV to AMR-WB
+
+$ ffmpeg -i sample.wav -ar 16000 -ab 19.85k -acodec libvo_amrwbenc samplewb.amr

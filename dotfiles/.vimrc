@@ -9,23 +9,42 @@ filetype plugin indent on
     set title
     set nohlsearch
     set cursorline
+
     "hi CursorLine cterm=bold ctermbg=235
     hi CursorLine cterm=bold ctermbg=DarkGrey
+
+    " Set to auto read when a file is changed from the outside
+    set autoread
+
+    " Height of the command bar
+    set cmdheight=2
+
+    " Ignore case when searching
+    set ignorecase
+
 " }
 
 " Coding {
     syntax on
     set encoding=utf8
     set softtabstop=4
+    set autoindent
+
+    " Use spaces instead of tabs
+    set expandtab
+
+    " 1 tab == 4 spaces
     set tabstop=4
     set shiftwidth=4
-    set autoindent
-    set expandtab
+
     set nowrap
     set ruler
     set showmatch
     set number
     set numberwidth=5
+
+    " Show matching brackets when text indicator is over them
+    set showmatch
 
     " Makefiles
     autocmd FileType make,automake set noexpandtab
