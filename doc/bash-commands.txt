@@ -1,3 +1,6 @@
+* <cmd> 2>&1 | tee log.txt
+    - print to screen and file at the same time, including error output
+
 * tabview <delimited_file>
     - display a delimited file in columnar format
 
