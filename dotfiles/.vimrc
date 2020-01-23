@@ -21,6 +21,7 @@ filetype plugin indent on
 
     " Ignore case when searching
     set ignorecase
+    set smartcase
 
 " }
 
