@@ -9,12 +9,15 @@ case $- in
 esac
 
 # Path
-export PATH="~/bin:~/bin/apache-maven-3.6.0/bin:$PATH"
+export PATH="~/bin:~/bin/apache-maven-3.6.0/bin:~/.cargo/bin:$PATH"
 
 # Java
 # export JAVA_HOME="/usr/lib/jvm/java-11-oracle"  ## This is set by the scripts below.
 alias setjava8='source ~/bin/java-utils/set-java-8.sh'
 alias setjava11='source ~/bin/java-utils/set-java-11.sh'
+
+# Example usage: dockershell ubuntu
+alias dockershell="docker run --rm --interactive --tty --entrypoint=/bin/bash"
 
 # Git prompt
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
