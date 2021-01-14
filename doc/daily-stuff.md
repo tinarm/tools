@@ -4,7 +4,7 @@
 ## Networking
 
 ### Who is using my port?
-`sudo lsof -i -P -n | grep LISTEN | <port>`
+`sudo lsof -i -P -n | grep LISTEN | grep <port>`
 
 ### Capture all network traffic on eth1
 `sudo tcpdump -i eth1 -s0 -vv -w eth1.pcap`
