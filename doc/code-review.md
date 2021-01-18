@@ -1,6 +1,6 @@
 # Doing a code review
 
-Do multiple "passes" where focus is on one attribute at at time. Start a the
+Do multiple "passes" where focus is on one attribute at at time. Start at the
 beginning and review the pull request with a single attribute in mind before
 moving on to the next.
 
